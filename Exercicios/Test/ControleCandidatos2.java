@@ -5,9 +5,20 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ControleCandidatos2 {
     public static void main(String[] args) {
-        processoSeletivo();
+        imprimirCandidatos();
     }
 
+
+
+    static void imprimirCandidatos() {
+        String[] candidatos = {"Aline", "Alceu", "Bruno", "Barbara", "Bruna"};
+
+        System.out.println("lista de candidatos aprovados no processo abaixo.");
+
+        for (int i =0; i < candidatos.length; i ++) {
+            System.out.println("O candidato nº" + (i +1) + "é " + candidatos[i]);
+        }
+    }
 
     static void processoSeletivo() {
         String[] candidatos = {"Aline", "Alceu", "Bruno", "Barbara", "Bruna", "Claudio", "Cesar", "Ciro", "Clara", "Diana", "Dario", "Dirceu", "Eliana"};
@@ -40,8 +51,6 @@ public class ControleCandidatos2 {
         System.out.println(respostaCandidato);
     }
 }
-
-
 
 
 
