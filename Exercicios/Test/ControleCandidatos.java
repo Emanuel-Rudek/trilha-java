@@ -3,12 +3,13 @@ package Exercicios.Test;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ControleCandidatos2 {
+public class ControleCandidatos {
     public static void main(String[] args) {
-        imprimirCandidatos();
+        String[] candidatos = {"Aline", "Alceu", "Bruno", "Barbara", "Bruna"};
+        for(String candidato : candidatos){
+            tentativaContato(candidato);
+        }
     }
-
-
 
     static void imprimirCandidatos() {
         String[] candidatos = {"Aline", "Alceu", "Bruno", "Barbara", "Bruna"};
@@ -16,8 +17,10 @@ public class ControleCandidatos2 {
         System.out.println("lista de candidatos aprovados no processo abaixo.");
 
         for (int i =0; i < candidatos.length; i ++) {
-            System.out.println("O candidato nº" + (i +1) + "é " + candidatos[i]);
+            System.out.println("O candidato nº" + i + "é " + candidatos[i]);
+
         }
+
     }
 
     static void processoSeletivo() {
@@ -50,7 +53,30 @@ public class ControleCandidatos2 {
         String respostaCandidato = salarioBase > salarioPretendido ? "Ligar para o candidato" : (salarioBase == salarioPretendido ? "Ligar para o candidato com contra proposta" : "aguardando demais resultados");
         System.out.println(respostaCandidato);
     }
+
+    static boolean ligar() {
+        return new Random().nextInt(3) == 1;
+    }
+
+    static void tentativaContato(String candidato){
+        int tentativa = 1;
+        boolean continuarTentando = true;
+        boolean ligacao = false;
+        do {
+            ligacao = ligar();
+            continuarTentando = !ligacao;
+            if(continuarTentando)
+                tentativa++;
+            else
+            System.out.println("contato realizado com sucesso");
+
+        } while (continuarTentando && tentativa <=3);
+        if(ligacao) {
+            System.out.println("conseguimos contato com " + candidato + " após " + tentativa + " tentativas");
+        } else {
+            System.out.println("não conseguimos contato com " + candidato);
+        }
+
+    }
+
 }
-
-
-
